@@ -25,13 +25,15 @@
                         $file = __DIR__."\..\json\account.json";
                         $fileContent = file_get_contents($file);
                         $accounts = json_decode($fileContent, true);
-                        foreach($accounts as $account) {
+                        // echoes balances of each accounts from account.json as cards
+                        
+                        for ($i = 0; $i <= 2; $i+=1) {
                             echo '<section class="card-third card-accounts card-hover" style="height: 200px">';
                             echo '<div class="card-accounts-text">';
-                            echo '<p>'.$account["name"].'</p>';
-                            echo '<h1>'.$setup["currencySymbol"].number_format($account["amount"], 2, '.', ',').'</h1>';
+                            echo '<p>'.$accounts[$i]["name"].'</p>';
+                            echo '<h1>'.$setup["currencySymbol"].number_format($accounts[$i]["amount"], 2, '.', ',').'</h1>';
                             echo '<p>'.$setup["currency"].'</p>';
-                            echo '<a>Activities</a>';
+                            echo '<a href="../activities" style="text-decoration:none;">Activities</a>';
                             echo '</div>';
                             echo '</section>';
                         }
@@ -47,30 +49,31 @@
                                 <tr>
                                     <th scope='col'>Account</th>
                                     <th scope='col'>Description</th>
-                                    <th scope='col'>Amount</th>
+                                    <th scope='col'>Deposit</th>
+                                    <th scope='col'>Withdrawal</th>
                                     <th scope='col'>Date</th>
                                 </tr>
                                 <?php
                                 $file = __DIR__."\..\json\history.json";
                                 $fileContent = file_get_contents($file);
                                 $transactions = json_decode($fileContent, true);
-                                foreach($transactions as $transaction) {
-                                    $date = $transaction["date"].$transaction["year"];
-                                    $time = strtotime($date);
-                                    $newTime = date("d-m-Y", $time);
-                                    $negative = $transaction["amount"] < 0;
-                                    $amountColor = "";
-                                    if ($negative) {
-                                        $amountColor = "negative";
-                                    } else {
-                                        $amountColor = "positive";
-                                    };
-                                    echo "<tr>";
-                                    echo "<th>".$transaction["accountNum"]."</th>";
-                                    echo "<td>".$transaction["desc"]."</td>";
-                                    echo "<td class='{$amountColor}'><span class='amount'>".number_format((float)$transaction["amount"], 2, '.', ' ')."</span></td>";
-                                    echo "<td>".$newTime."</td>";
-                                    echo "</tr>";
+                                for ($i = 0; $i <= 8; $i+=1) {
+                                    if (array_key_exists($i,    $transactions)) {
+                                        $date = $transactions[$i]["date"].$transactions[$i]["year"];
+                                        $time = strtotime($date);
+                                        $newTime = date("d-m-Y", $time);
+                                        $negative = $transactions[$i]["amount"] < 0;
+                                        $amountColor = "";
+                                        $withdraw = $negative ? $setup["currencySymbol"].number_format((float)abs($transactions[$i]["amount"]), 2, '.', ',') : ' ';
+                                        $deposit = $negative ? ' ' : $setup["currencySymbol"].number_format((float)abs($transactions[$i]["amount"]), 2, '.', ',');
+                                        echo '<tr>';
+                                        echo '<th>'.$transactions[$i]["accountNum"].'</th>';
+                                        echo '<td>'.$transactions[$i]["desc"].'</td>';
+                                        echo '<td>'.$deposit.'</td>';
+                                        echo '<td>'.$withdraw.'</td>';
+                                        echo '<td>'.$newTime.'</td>';
+                                        echo '</tr>';
+                                    }
                                 };
                                 ?>
                             </tbody>

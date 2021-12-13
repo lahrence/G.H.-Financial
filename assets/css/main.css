@@ -84,7 +84,7 @@ body {
 }
 
 .navbar-content a:hover {
-    border-left: 5px solid var(--primary-text);
+    box-shadow: inset 13px 3px 0px -8px var(--primary-text);
     background-color: var(--black-hover);
 }
 
@@ -110,6 +110,7 @@ body {
 .navbar-title:hover {
     background-color: var(--transparent) !important;
     border-left: none !important;
+    box-shadow: none !important;
 }
 
 .navbar-title img {
@@ -187,7 +188,7 @@ body {
     }
 
     .navbar-content a:hover {
-        border-left: 0px solid var(--transparent);
+        box-shadow: none;
         background-color: var(--primary-bg);
         color: var(--black)
     }
@@ -198,7 +199,6 @@ body {
 }
 /*Define cards*/
 section {
-    display: grid;
     height: 300px;
     color: var(--black);
     background-color: var(--primary-text);
@@ -268,7 +268,43 @@ section {
 }
 
 .card-full {
-    height: 80%;
+    display: grid;
+    height: 75%;
+}
+
+.card-footer {
+    margin-top: -20px;
+    height: 60px;
+}
+
+.page-nav {
+    padding: 0;
+}
+
+.page-nav a {
+    display: inline-block;
+    width: 19px;
+    text-align: center;
+    padding: 10px;
+    background-color: var(--primary-text);
+    border-radius: 5px;
+    color: var(--black);
+    font-family: 'Inconsolata', monospace;
+    text-decoration: none;
+    box-shadow: 0px 0px 5px -2px rgb(0 0 0 / 15%);
+    border: 1px solid rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.page-nav a:hover {
+    background-color: var(--black);
+    color: var(--primary-text);
+}
+
+.current {
+    background-color: var(--black) !important;
+    color: var(--primary-text) !important;
 }
 
 @media only screen and (max-width: 900px) {
@@ -343,20 +379,31 @@ section {
     margin: 10px;
 }
 
+.activities-table {
+    border-collapse: collapse;
+    background-color: var(--primary-text);
+    margin: 10px;
+}
+
 .history-table th, td {
     width: 200px;
-    padding: 10px;
+    padding: 5px;
     color: var(--black);
     text-align: center;
     font-family: 'Inconsolata', monospace;
 }
 
 .history-table tr {
+    height: 5px;
     transition: var(--transition);
 }
 
 .history-table tr:nth-child(1):hover {
     background-color: var(--primary-text);
+}
+
+.tr-hover-disable:hover {
+    background-color: var(--primary-text) !important;
 }
 
 .history-table tr:hover {

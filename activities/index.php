@@ -2,8 +2,23 @@
 <html lang="en">
     <head>
         <?php
+        $file = __DIR__."\..\json\history.json";
+        $fileContent = file_get_contents($file);
+        $transactions = json_decode($fileContent, true);
+        $length = count($transactions);
+        $maxPage = ceil($length/18);
+        $buttonRange = 2;
+
         $path = "../";
         require("../assets/requires/head.php");
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        if ($page > $maxPage) {
+            header("Location: index.php?page=".$maxPage);
+        }
+        else if ($page <= 0) {
+            header("Location: index.php?page=1");
+        }
+        $pageIndex = empty($_GET['page']) ? 0 : $_GET['page'] - 1;
         ?>
     </head>
     <body>
@@ -21,39 +36,79 @@
                     </div>
                 </section>
                 <section class="history card-full">
-                    <table class="history-table">
+                    <table class="history-table activities-table">
                         <tbody>
                             <tr>
                                 <th scope='col'>Account</th>
                                 <th scope='col'>Description</th>
-                                <th scope='col'>Amount</th>
+                                <th scope='col'>Deposit</th>
+                                <th scope='col'>Withdrawal</th>
                                 <th scope='col'>Date</th>
                             </tr>
                             <?php
-                            $file = __DIR__."\..\json\history.json";
-                            $fileContent = file_get_contents($file);
-                            $transactions = json_decode($fileContent, true);
-                            foreach($transactions as $transaction) {
-                                $date = $transaction["date"].$transaction["year"];
-                                $time = strtotime($date);
-                                $newTime = date("d-m-Y", $time);
-                                $negative = $transaction["amount"] < 0;
-                                $amountColor = "";
-                                if ($negative) {
-                                    $amountColor = "negative";
+                            for ($i = 0; $i <= 17; $i+=1) {
+                                $j = $i + 18 * $pageIndex;
+                                if (array_key_exists($j, $transactions)) {
+                                    $date = $transactions[$j]["date"].$transactions[$j]["year"];
+                                    $time = strtotime($date);
+                                    $newTime = date("d-m-Y", $time);
+                                    $negative = $transactions[$j]["amount"] < 0;
+                                    $amountColor = "";
+                                    $withdraw = $negative ? $setup["currencySymbol"].number_format((float)abs($transactions[$j]["amount"]), 2, '.', ',') : ' ';
+                                    $deposit = $negative ? ' ' : $setup["currencySymbol"].number_format((float)abs($transactions[$j]["amount"]), 2, '.', ',');
+                                    echo '<tr>';
+                                    echo '<th>'.$transactions[$j]["accountNum"].'</th>';
+                                    echo '<td>'.$transactions[$j]["desc"].'</td>';
+                                    echo '<td>'.$deposit.'</td>';
+                                    echo '<td>'.$withdraw.'</td>';
+                                    echo '<td>'.$newTime.'</td>';
+                                    echo '</tr>';
                                 } else {
-                                    $amountColor = "positive";
-                                };
-                                echo "<tr>";
-                                echo "<th>".$transaction["accountNum"]."</th>";
-                                echo "<td>".$transaction["desc"]."</td>";
-                                echo "<td class='{$amountColor}'><span class='amount'>".number_format((float)$transaction["amount"], 2, '.', ' ')."</span></td>";
-                                echo "<td>".$newTime."</td>";
-                                echo "</tr>";
+                                    echo '<tr class="tr-hover-disable">';
+                                    echo '<th> </th>';
+                                    echo '<td> </td>';
+                                    echo '<td> </td>';
+                                    echo '<td> </td>';
+                                    echo '<td> </td>';
+                                    echo '</tr>';
+                                }
                             };
                             ?>
                         </tbody>
                     </table>
+                </section>
+                <section class="header card-footer">
+                    <ul class="page-nav">
+                        <?php
+                            if ($page == 1) {
+                                echo '<a class="current">1</a>';
+                            } else {
+                                echo '<a href="index.php?page=1">1</a>';
+                            }
+                            if ($page > $buttonRange*2) {
+                                echo '<a>&nbsp;</a>';
+                            }
+                            for ($i = -$buttonRange; $i <= $buttonRange; $i+=1) {
+                                $checkPage = $i+$page;
+                                if (!($checkPage <= 1) && !($checkPage >= $maxPage)) {
+                                    if ($checkPage == $page) {
+                                        echo '<a class="current">'.$page.'</a>';
+                                    } else {
+                                        echo '<a href="index.php?page='.$checkPage.'">'.$checkPage.'</a>';
+                                    }
+                                }
+                            }
+                            if ($page <= $maxPage-$buttonRange*2) {
+                                echo '<a>&nbsp;</a>';
+                            }
+                            if ($page == $maxPage) {
+                                echo '<a class="current">'.$maxPage.'</a>';
+                            } else {
+                                echo '<a href="index.php?page='.$maxPage.'">'.$maxPage.'</a>';
+                            }
+                            
+                        ?>
+                    </ul>
                 </section>
             </div>
         </div>

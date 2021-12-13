@@ -11,7 +11,8 @@ $userFileContent = file_get_contents($userFile);
 $user = json_decode($userFileContent, true);
 
 echo "<title>" . $setup["title"] . "</title>";
-echo '<link rel="stylesheet" href="'.$path.'assets/css/main.css">';
+echo '<link rel="stylesheet" href="'.$path.'assets/css/main.css"/>';
+echo '<link rel="icon" href="'.$path.'assets/images/logo/logo-background-solid.png" type="image/x-icon"/>';
 ?>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
