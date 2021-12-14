@@ -12,7 +12,7 @@ if (!$isRoot) {
             <span class="navbar-content-break"></span>
             <a href="../settings/"><span class="navbar-content-text"><span class="material-icons" style="vertical-align: middle; margin-right: 30px;">settings</span>SETTINGS</span></a>
             <a><span class="navbar-content-text"><span class="material-icons" style="vertical-align: middle; margin-right: 30px;">help</span>HELP</span></a>
-            <a><span class="navbar-content-text"><span class="material-icons" style="vertical-align: middle; margin-right: 30px;">logout</span>LOG OUT</span></a>
+            <a href="../assets/includes/logout.php"><span class="navbar-content-text"><span class="material-icons" style="vertical-align: middle; margin-right: 30px;">logout</span>LOG OUT</span></a>
         </ul>
     </div>';
 }

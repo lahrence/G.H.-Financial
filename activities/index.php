@@ -82,8 +82,6 @@
                             ?>
                         </tbody>
                     </table>
-                </section>
-                <section class="header card-footer">
                     <ul class="page-nav">
                         <?php
                             if ($page == 1) {
@@ -92,7 +90,7 @@
                                 echo '<a href="index.php?page=1">1</a>';
                             }
                             if ($page > $buttonRange*2) {
-                                echo '<a class="page-nav-gap">&nbsp;</a>';
+                                echo '<a class="page-nav-gap">...</a>';
                             }
                             for ($i = -$buttonRange; $i <= $buttonRange; $i+=1) {
                                 $checkPage = $i+$page;
@@ -105,7 +103,7 @@
                                 }
                             }
                             if ($page <= $maxPage-$buttonRange*2) {
-                                echo '<a class="page-nav-gap">&nbsp;</a>';
+                                echo '<a class="page-nav-gap">...</a>';
                             }
                             if ($page == $maxPage) {
                                 echo '<a class="current">'.$maxPage.'</a>';

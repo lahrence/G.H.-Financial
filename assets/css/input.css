@@ -33,12 +33,21 @@
     height: 25px;
     width: 25px;
     margin: 11px 0px 0px 20px;
-    background-color: var(--primary-text);
+    background-color: #fff;
     box-shadow: 0px 0px 5px -2px rgb(0 0 0 / 15%);
     border: 1px solid rgba(0,0,0,0.15);
     border-radius: var(--border-radius);
     transition: var(--transition);
     line-height: 30px;
+}
+
+form .bi {
+    float: right;
+    cursor: pointer;
+    margin-left: -35px;
+    transform: translate(-10px, -49px);
+    position: relative;
+    z-index: 2;
 }
   
   /* On mouse-over, add a grey background color */
@@ -121,4 +130,16 @@
 .settings-form button:hover {
     color: var(--primary-text);
     background-color: var(--black);
+}
+
+.select-container {
+
+}
+
+.settings-form select {
+    width: calc(100% + 72px);
+    height: 100%;
+    margin: -11px 0px -11px -61px;
+    padding: 12px;
+    color: var(--black) !important;
 }

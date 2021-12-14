@@ -1,8 +1,8 @@
 {
     "currency": "USD",
     "currencySymbol": "$",
-    "title": "Gull le Bell",
-    "footerText": "\u00a9 Gull le Belle 2022",
+    "title": "Gull le Belle",
+    "footerText": "\u00a9 Gull le Belle 2021",
     "borderRadius": "5",
     "loginCheck": true,
     "darkMode": true

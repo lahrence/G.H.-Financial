@@ -7,4 +7,5 @@ $user["isLoggedIn"] = false;
 $file = fopen($fileName, 'w');
 fwrite($file, json_encode($user, JSON_PRETTY_PRINT));
 fclose($file);
+header("Location: ../../");
 ?>

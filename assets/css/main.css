@@ -10,6 +10,10 @@ body {
     overflow: hidden;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 @media only screen and (max-width: 768px) {
     body {
         margin: 0;
@@ -23,7 +27,7 @@ body {
     margin: 0;
     display: grid;
     height: 100vh;
-    grid-template-columns: 225px auto;
+    grid-template-columns: 230px auto;
 }
 
 @media only screen and (max-width: 768px){
@@ -257,36 +261,42 @@ section {
 
 .card-full {
     display: grid;
-    height: 75%;
+    height: 77.5vh;
+    overflow: scroll;
 }
 
 .card-full-fixed {
     display: grid;
-    height: 550px;
+    height: 77.5vh;
 }
 
 .card-footer {
     margin-top: -20px;
     height: 60px;
+    overflow: scroll;
 }
 
 .page-nav {
-    padding: 0;
+    padding: 3px 0 0 0;
+    margin-top: -10px;
+    margin-bottom: 0px;
+    text-align: center;
+    box-shadow: 0px 0px 5px -2px rgb(0 0 0 / 15%);
+    border-top: 1px solid rgba(0,0,0,0.15);
+    background-color: var(--primary-text);
 }
 
 .page-nav a {
     display: inline-block;
-    width: 19px;
     text-align: center;
-    margin: 0px 5px;
+    margin: 5px 0px;
+    width: 18px;
     padding: 10px;
     background-color: var(--primary-text);
     border-radius: var(--border-radius);
     color: var(--black);
     font-family: 'Inconsolata', monospace;
     text-decoration: none;
-    box-shadow: 0px 0px 5px -2px rgb(0 0 0 / 15%);
-    border: 1px solid rgba(0,0,0,0.15);
     cursor: pointer;
     transition: var(--transition);
     user-select: none;
@@ -295,18 +305,24 @@ section {
 .page-nav a:hover {
     background-color: var(--black);
     color: var(--primary-text);
+    border-radius: var(--border-radius);
 }
 
 .page-nav-gap {
-    background-color: var(--transparent) !important;
-    border: none !important;
-    box-shadow: none !important;
     cursor: default !important;
 }
 
+.page-nav-gap:hover {
+    cursor: default !important;
+    background-color: var(--primary-text) !important;
+    color: var(--black) !important;
+}
+
 .current {
-    background-color: var(--black) !important;
+    background-color: var(--black)!important;
     color: var(--primary-text) !important;
+    cursor: default !important;
+    border-radius: var(--border-radius);
 }
 
 @media only screen and (max-width: 1000px) {
