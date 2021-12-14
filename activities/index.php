@@ -2,6 +2,14 @@
 <html lang="en">
     <head>
         <?php
+        $path = "../";
+        $css = "main";
+        $title = "Activities | ";
+        $isRoot = false;
+        require("../assets/requires/head.php");
+        if (!$user["isLoggedIn"] and $setup["loginCheck"]) {
+            header("Location: ../index.php?error=notloggedin");
+        }
         $file = __DIR__."\..\json\history.json";
         $fileContent = file_get_contents($file);
         $transactions = json_decode($fileContent, true);
@@ -9,8 +17,6 @@
         $maxPage = ceil($length/18);
         $buttonRange = 2;
 
-        $path = "../";
-        require("../assets/requires/head.php");
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
         if ($page > $maxPage) {
             header("Location: index.php?page=".$maxPage);
@@ -86,7 +92,7 @@
                                 echo '<a href="index.php?page=1">1</a>';
                             }
                             if ($page > $buttonRange*2) {
-                                echo '<a>&nbsp;</a>';
+                                echo '<a class="page-nav-gap">&nbsp;</a>';
                             }
                             for ($i = -$buttonRange; $i <= $buttonRange; $i+=1) {
                                 $checkPage = $i+$page;
@@ -99,7 +105,7 @@
                                 }
                             }
                             if ($page <= $maxPage-$buttonRange*2) {
-                                echo '<a>&nbsp;</a>';
+                                echo '<a class="page-nav-gap">&nbsp;</a>';
                             }
                             if ($page == $maxPage) {
                                 echo '<a class="current">'.$maxPage.'</a>';

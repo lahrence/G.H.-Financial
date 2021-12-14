@@ -3,7 +3,13 @@
     <head>
         <?php
         $path = "../";
+        $css = "main";
+        $title = "Dashboard | ";
+        $isRoot = false;
         require("../assets/requires/head.php");
+        if (!$user["isLoggedIn"] and $setup["loginCheck"]) {
+            header("Location: ../index.php?error=notloggedin");
+        }
         ?>
     </head>
     <body>
@@ -25,15 +31,28 @@
                         $file = __DIR__."\..\json\account.json";
                         $fileContent = file_get_contents($file);
                         $accounts = json_decode($fileContent, true);
+
                         // echoes balances of each accounts from account.json as cards
-                        
                         for ($i = 0; $i <= 2; $i+=1) {
+                            switch ($i) {
+                                case 0:
+                                    $color = '#ce901d';
+                                    break;
+                                case 1:
+                                    $color = 'darkseagreen';
+                                    break;
+                                case 2:
+                                    $color = 'darksalmon';
+                                    break;
+                            }
                             echo '<section class="card-third card-accounts card-hover" style="height: 200px">';
                             echo '<div class="card-accounts-text">';
                             echo '<p>'.$accounts[$i]["name"].'</p>';
                             echo '<h1>'.$setup["currencySymbol"].number_format($accounts[$i]["amount"], 2, '.', ',').'</h1>';
-                            echo '<p>'.$setup["currency"].'</p>';
-                            echo '<a href="../activities" style="text-decoration:none;">Activities</a>';
+                            echo '<p class="currency-text">'.$setup["currency"].'</p>';
+                            echo '<a href="../activities" style="text-decoration:none; background-color:'.$color.'"
+                            onMouseOver="this.style.backgroundColor=\''.$black.'\'"
+                            onMouseOut="this.style.backgroundColor=\''.$color.'\'">Activities</a>';
                             echo '</div>';
                             echo '</section>';
                         }

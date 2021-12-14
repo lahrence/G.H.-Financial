@@ -3,6 +3,9 @@
     <head>
         <?php
         $path = "";
+        $css = "home";
+        $title = "";
+        $isRoot = true;
         require("assets/requires/head.php");
         ?>
     </head>

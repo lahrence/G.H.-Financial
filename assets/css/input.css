@@ -1,0 +1,124 @@
+/* Customize the label (the container) */
+.container {
+    display: block;
+    position: relative;
+    margin: 5px 0px 0px 0px;
+    padding: 10px 10px 10px 60px;
+    cursor: pointer;
+    font-size: 15px;
+    user-select: none;
+    background-color: var(--primary-bg);
+    line-height: 30px;
+    font-family: 'Inconsolata', monospace;
+    box-shadow: 0px 0px 5px -2px rgb(0 0 0 / 15%);
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: var(--border-radius);
+    color: var(--secondary-text) !important;
+}
+  
+  /* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+  
+  /* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    margin: 11px 0px 0px 20px;
+    background-color: var(--primary-text);
+    box-shadow: 0px 0px 5px -2px rgb(0 0 0 / 15%);
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    line-height: 30px;
+}
+  
+  /* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: var(--primary-bg);
+}
+  
+  /* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: var(--green);
+}
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+  /* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+  /* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.input-text {
+    top: -20px;
+    padding: 2px 10px 2px 10px;
+    opacity: 1 !important;
+    cursor: text !important;
+    background-color: var(--primary-bg);
+    border: 1px solid var(--primary-bg);
+    box-shadow: 0px 2px 0px 0px var(--green);
+    width: 318px;
+    box-sizing: border-box;
+    border-radius: 0px !important;
+    width: 100%;
+    color: var(--black) !important;
+    transition: var(--transition);
+}
+
+.input-text:focus {
+    outline: none;
+    box-shadow: -2px 0px 0px 0px var(--green);
+}
+
+.input-text-container {
+    height: 42.5px;
+    background-color: var(--primary-bg);
+    box-shadow: 0px 0px 5px -2px rgb(0 0 0 / 15%);
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: var(--border-radius);
+    padding: 0px 5px;
+}
+
+.settings-form button {
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px;
+    color: #fff;
+    background-color: var(--green);
+    box-shadow: 0px 0px 5px -2px rgb(0 0 0 / 15%);
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.settings-form button:hover {
+    color: var(--primary-text);
+    background-color: var(--black);
+}
