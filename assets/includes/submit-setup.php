@@ -8,6 +8,7 @@ $currencySymbol = $_POST["currencySymbol"];
 $title = $_POST["title"];
 $footerText = $_POST["footerText"];
 $borderRadius = $_POST["borderRadius"];
+$backgroundImage = isset($_POST["backgroundImage"]) ? true : false;
 $loginCheck = isset($_POST["loginCheck"]) ? true : false;
 $darkMode = isset($_POST["darkMode"]) ? true : false;
 
@@ -16,6 +17,7 @@ echo var_dump($currencySymbol);
 echo var_dump($title);
 echo var_dump($footerText);
 echo var_dump($borderRadius);
+echo var_dump($backgroundImage);
 echo var_dump($loginCheck);
 echo var_dump($darkMode);
 
@@ -24,11 +26,12 @@ $setup["currencySymbol"] = $currencySymbol;
 $setup["title"] = $title;
 $setup["footerText"] = $footerText;
 $setup["borderRadius"] = $borderRadius;
+$setup["backgroundImage"] = $backgroundImage;
 $setup["loginCheck"] = $loginCheck;
 $setup["darkMode"] = $darkMode;
 
 $file = fopen($fileName, 'w');
 fwrite($file, json_encode($setup, JSON_PRETTY_PRINT));
 fclose($file);
-header("Location: ../../settings/index.php");
+header("Location: ../../settings/");
 ?>

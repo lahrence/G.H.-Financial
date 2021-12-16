@@ -4,6 +4,7 @@
     "title": "Gull le Belle",
     "footerText": "\u00a9 Gull le Belle 2021",
     "borderRadius": "5",
-    "loginCheck": true,
+    "backgroundImage": false,
+    "loginCheck": false,
     "darkMode": true
 }

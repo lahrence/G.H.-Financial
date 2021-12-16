@@ -62,41 +62,44 @@
                     <section>
                         
                     </section>
-                    <section class="history">
-                        <table class="history-table">
-                            <tbody>
-                                <tr>
-                                    <th scope='col'>Account</th>
-                                    <th scope='col'>Description</th>
-                                    <th scope='col'>Deposit</th>
-                                    <th scope='col'>Withdrawal</th>
-                                    <th scope='col'>Date</th>
-                                </tr>
-                                <?php
-                                $file = __DIR__."\..\json\history.json";
-                                $fileContent = file_get_contents($file);
-                                $transactions = json_decode($fileContent, true);
-                                for ($i = 0; $i <= 8; $i+=1) {
-                                    if (array_key_exists($i,    $transactions)) {
-                                        $date = $transactions[$i]["date"].$transactions[$i]["year"];
-                                        $time = strtotime($date);
-                                        $newTime = date("d-m-Y", $time);
-                                        $negative = $transactions[$i]["amount"] < 0;
-                                        $amountColor = "";
-                                        $withdraw = $negative ? $setup["currencySymbol"].number_format((float)abs($transactions[$i]["amount"]), 2, '.', ',') : ' ';
-                                        $deposit = $negative ? ' ' : $setup["currencySymbol"].number_format((float)abs($transactions[$i]["amount"]), 2, '.', ',');
-                                        echo '<tr>';
-                                        echo '<th>'.$transactions[$i]["accountNum"].'</th>';
-                                        echo '<td>'.$transactions[$i]["desc"].'</td>';
-                                        echo '<td>'.$deposit.'</td>';
-                                        echo '<td>'.$withdraw.'</td>';
-                                        echo '<td>'.$newTime.'</td>';
-                                        echo '</tr>';
-                                    }
-                                };
-                                ?>
-                            </tbody>
-                        </table>
+                    <section class="history history-dashboard">
+                        <div class="table-card">
+                            <table class="history-table dashboard-table">
+                                <tbody>
+                                    <tr>
+                                        <th scope='col'>Account</th>
+                                        <th scope='col'>Description</th>
+                                        <th scope='col'>Deposit</th>
+                                        <th scope='col'>Withdrawal</th>
+                                        <th scope='col'>Date</th>
+                                    </tr>
+                                    <?php
+                                    $file = __DIR__."\..\json\history.json";
+                                    $fileContent = file_get_contents($file);
+                                    $transactions = json_decode($fileContent, true);
+                                    for ($i = 0; $i <= 6; $i+=1) {
+                                        if (array_key_exists($i,    $transactions)) {
+                                            $date = $transactions[$i]["date"].$transactions[$i]["year"];
+                                            $time = strtotime($date);
+                                            $newTime = date("d-m-Y", $time);
+                                            $negative = $transactions[$i]["amount"] < 0;
+                                            $amountColor = "";
+                                            $withdraw = $negative ? $setup["currencySymbol"].number_format((float)abs($transactions[$i]["amount"]), 2, '.', ',') : ' ';
+                                            $deposit = $negative ? ' ' : $setup["currencySymbol"].number_format((float)abs($transactions[$i]["amount"]), 2, '.', ',');
+                                            echo '<tr>';
+                                            echo '<th>'.$transactions[$i]["accountNum"].'</th>';
+                                            echo '<td>'.$transactions[$i]["desc"].'</td>';
+                                            echo '<td>'.$deposit.'</td>';
+                                            echo '<td>'.$withdraw.'</td>';
+                                            echo '<td>'.$newTime.'</td>';
+                                            echo '</tr>';
+                                        }
+                                    };
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer"><a href="../activities/">Show All Transactions</a></div>
                     </section>
                 </div>
             </div>

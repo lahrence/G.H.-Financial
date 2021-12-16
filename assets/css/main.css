@@ -48,7 +48,7 @@ body {
     z-index: 102;
     background-color: var(--menu-primary);
     box-shadow: 0px 0px 5px -2px rgb(0 0 0 / 15%);
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .navbar-content {
@@ -191,6 +191,7 @@ body {
 }
 /*Define cards*/
 section {
+    position: relative;
     height: 40vh;
     color: var(--black);
     background-color: var(--primary-text);
@@ -200,10 +201,6 @@ section {
     overflow: scroll;
     margin: 25px;
     transition: var(--transition);
-}
-
-.card-hover:hover {
-    box-shadow: 0px 0px 45px -2px rgb(0 0 0 / 15%);
 }
 
 .header {
@@ -239,6 +236,38 @@ section {
 }
 
 /*Cards*/
+.card-footer {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    background-color: var(--primary-text);
+    box-shadow: 0px 0px 5px -2px rgb(0 0 0 / 15%);
+    border-top: 1px solid rgba(131, 131, 131, 0.15);
+}
+
+.card-footer a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    color: var(--black-hover);
+    text-decoration: none;
+    font-family: 'Inconsolata', monospace;
+    background-color: var(--primary-bg);
+    border-radius: var(--border-radius-circle);
+    box-shadow: 0px 0px 5px -2px rgb(0 0 0 / 15%);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.card-footer a:hover {
+    color: var(--primary-bg);
+    background-color: var(--black);
+}
+
+.card-hover:hover {
+    box-shadow: 0px 0px 10px -2px rgb(0 0 0 / 15%);
+}
+
 .card-group-half {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -267,10 +296,10 @@ section {
 
 .card-full-fixed {
     display: grid;
-    height: 77.5vh;
+    height: 73.65vh;
 }
 
-.card-footer {
+.footer-card {
     margin-top: -20px;
     height: 60px;
     overflow: scroll;
@@ -282,7 +311,7 @@ section {
     margin-bottom: 0px;
     text-align: center;
     box-shadow: 0px 0px 5px -2px rgb(0 0 0 / 15%);
-    border-top: 1px solid rgba(0,0,0,0.15);
+    border-top: 1px solid rgba(131, 131, 131, 0.15);
     background-color: var(--primary-text);
 }
 
@@ -294,6 +323,7 @@ section {
     padding: 10px;
     background-color: var(--primary-text);
     border-radius: var(--border-radius);
+    box-shadow: none !important;
     color: var(--black);
     font-family: 'Inconsolata', monospace;
     text-decoration: none;
@@ -350,10 +380,23 @@ section {
         grid-template-columns: 100%;
     }
 
-    .card-footer {
+    .footer-card {
         margin-top: -20px;
         height: 100px;
     }
+}
+
+.table-card {
+    overflow: scroll;
+    position: absolute;
+    top: 0;
+    height: 80%;
+}
+
+.table-card-height {
+    height: 92% !important;
+    width: 100%;
+    display: grid;
 }
 
 .card-accounts {
@@ -399,10 +442,19 @@ section {
 /*Specifics*/
 
 /*Dashboard table*/
+.history {
+    text-align: center;
+}
+
+.history-dashboard {
+    overflow: hidden;
+}
+
 .history-table {
     border-collapse: collapse;
     background-color: var(--primary-text);
     margin: 10px;
+    overflow: scroll;
 }
 
 .activities-table {
@@ -472,6 +524,11 @@ section {
 
 .settings-form form {
     width: 100%;
+}
+
+.error {
+    color: tomato;
+    font-style: italic;
 }
 
 /*Footer*/

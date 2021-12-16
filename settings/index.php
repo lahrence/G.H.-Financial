@@ -250,15 +250,15 @@
                                 </div>
 
                                 <br>
-                                <p>Check Log In</p>
+                                <p>Background Image</p>
                                 <label class="container">
-                                    <input type="checkbox" name="loginCheck" <?php
-                                    $loginCheck = "";
-                                    if ($setup["loginCheck"]) {
-                                        $loginCheck = "checked";
+                                    <input type="checkbox" name="backgroundImage" <?php
+                                    $backgroundImage = "";
+                                    if ($setup["backgroundImage"]) {
+                                        $backgroundImage = "checked";
                                     }
 
-                                    echo $loginCheck;?>>Check if user is logged in (for debugging).
+                                    echo $backgroundImage;?>>Toggle background texture overlay.
                                     <span class="checkmark"></span>
                                 </label>
 
@@ -274,6 +274,19 @@
                                     echo $darkMode;?>>
                                     <span class="checkmark"></span>
                                 </label>
+
+                                <br>
+                                <p>Check Log In</p>
+                                <label class="container">
+                                    <input type="checkbox" name="loginCheck" <?php
+                                    $loginCheck = "";
+                                    if ($setup["loginCheck"]) {
+                                        $loginCheck = "checked";
+                                    }
+
+                                    echo $loginCheck;?>>Check if user is logged in (for debugging).
+                                    <span class="checkmark"></span>
+                                </label>
                                 <button type="submit">Submit Site Preferences</button>
 
                             </form>
@@ -283,23 +296,6 @@
                         <div class="settings-form">
                             <form action="../assets/includes/submit-user.php" method="post">
                                 <h1>User Preferences</h1>
-                                <p>Username</p>
-                                <div class="input-text-container">
-                                    <br>
-                                    <input input="text" name="username" class="container input-text"
-                                    value="<?php echo $user["username"];?>">
-                                </div>
-
-                                <br>
-                                <p>Password</p>
-                                <div class="input-text-container">
-                                    <br>
-                                    <input type="password" input="text" name="password" id="password" class="container input-text"
-                                    value="<?php echo $user["password"];?>">
-                                    <span class="bi bi-eye-slash" id="togglePassword"></span>
-                                </div>
-
-                                <br>
                                 <p>First Name</p>
                                 <div class="input-text-container">
                                     <br>
@@ -313,6 +309,67 @@
                                     <br>
                                     <input input="text" name="lName" class="container input-text"
                                     value="<?php echo $user["lName"];?>">
+                                </div>
+
+                                <br>
+                                <p>Username <?php 
+                                    if (isset($_GET["error"])){
+                                        $error = $_GET["error"];
+                                        if ($error == 'usernameempty') {
+                                            echo '<span class="error">(don\'t leave this field empty)</span>';
+                                        } else if ($error == 'allfieldsempty') {
+                                            echo '<span class="error">(don\'t leave this field empty)</span>';
+                                        }
+                                    }
+                                ?></p>
+                                <div class="input-text-container">
+                                    <br>
+                                    <input input="text" name="username" class="container input-text"
+                                    value="<?php echo $user["username"];?>">
+                                </div>
+
+                                <br>
+                                <p>New Password</p>
+                                <div class="input-text-container">
+                                    <br>
+                                    <input type="password" input="text" name="newPwd" id="password" class="container input-text newPwd">
+                                    <span class="bi bi-eye-slash" id="togglePassword" for="newPwd" onclick="pwdReveal(this)"></span>
+                                </div>
+
+                                <br>
+                                <p>Confirm Password <?php 
+                                    if (isset($_GET["error"])){
+                                        $error = $_GET["error"];
+                                        if ($error == 'confirmpwdempty') {
+                                            echo '<span class="error">(don\'t leave this field empty)</span>';
+                                        } else if ($error == 'newpwdmatch'){
+                                            echo '<span class="error">(the passwords do not match)</span>';
+                                        }
+                                    }
+                                ?></p>
+                                <div class="input-text-container">
+                                    <br>
+                                    <input type="password" input="text" name="confirmPwd" id="password" class="container input-text confirmPwd">
+                                    <span class="bi bi-eye-slash" id="togglePassword" for="confirmPwd" onclick="pwdReveal(this)"></span>
+                                </div>
+
+                                <br>
+                                <p>Current Password<span class="error">*</span> <?php 
+                                    if (isset($_GET["error"])){
+                                        $error = $_GET["error"];
+                                        if ($error == 'currentpwdempty') {
+                                            echo '<span class="error">(this field is required)</span>';
+                                        } else if ($error == 'currentpwdmatch'){
+                                            echo '<span class="error">(password does not match)</span>';
+                                        } else if ($error == 'allfieldsempty') {
+                                            echo '<span class="error">(this field is required)</span>';
+                                        }
+                                    }
+                                ?></p>
+                                <div class="input-text-container">
+                                    <br>
+                                    <input type="password" input="text" name="currentPwd" id="password" class="container input-text currentPwd">
+                                    <span class="bi bi-eye-slash" id="togglePassword" for="currentPwd" onclick="pwdReveal(this)"></span>
                                 </div>
                                 <button type="submit">Submit User Preferences</button>
 

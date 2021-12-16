@@ -1,0 +1,26 @@
+{
+    "Admin": {
+        "password": "Admin123$$",
+        "username": "Admin",
+        "isLoggedIn": false,
+        "fName": "John",
+        "lName": "Smith",
+        "accounts": [
+            {
+                "name": "Checking",
+                "amount": 1250.21,
+                "number": 123412341234
+            },
+            {
+                "name": "Savings",
+                "amount": 41700.65,
+                "number": 123412341234
+            },
+            {
+                "name": "Credit",
+                "amount": 1242.51,
+                "number": 123412341234
+            }
+        ]
+    }
+}

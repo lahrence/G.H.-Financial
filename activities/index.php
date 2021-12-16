@@ -42,47 +42,49 @@
                     </div>
                 </section>
                 <section class="history card-full">
-                    <table class="history-table activities-table">
-                        <tbody>
-                            <tr>
-                                <th scope='col'>Account</th>
-                                <th scope='col'>Description</th>
-                                <th scope='col'>Deposit</th>
-                                <th scope='col'>Withdrawal</th>
-                                <th scope='col'>Date</th>
-                            </tr>
-                            <?php
-                            for ($i = 0; $i <= 17; $i+=1) {
-                                $j = $i + 18 * $pageIndex;
-                                if (array_key_exists($j, $transactions)) {
-                                    $date = $transactions[$j]["date"].$transactions[$j]["year"];
-                                    $time = strtotime($date);
-                                    $newTime = date("d-m-Y", $time);
-                                    $negative = $transactions[$j]["amount"] < 0;
-                                    $amountColor = "";
-                                    $withdraw = $negative ? $setup["currencySymbol"].number_format((float)abs($transactions[$j]["amount"]), 2, '.', ',') : ' ';
-                                    $deposit = $negative ? ' ' : $setup["currencySymbol"].number_format((float)abs($transactions[$j]["amount"]), 2, '.', ',');
-                                    echo '<tr>';
-                                    echo '<th>'.$transactions[$j]["accountNum"].'</th>';
-                                    echo '<td>'.$transactions[$j]["desc"].'</td>';
-                                    echo '<td>'.$deposit.'</td>';
-                                    echo '<td>'.$withdraw.'</td>';
-                                    echo '<td>'.$newTime.'</td>';
-                                    echo '</tr>';
-                                } else {
-                                    echo '<tr class="tr-hover-disable">';
-                                    echo '<th> </th>';
-                                    echo '<td> </td>';
-                                    echo '<td> </td>';
-                                    echo '<td> </td>';
-                                    echo '<td> </td>';
-                                    echo '</tr>';
-                                }
-                            };
-                            ?>
-                        </tbody>
-                    </table>
-                    <ul class="page-nav">
+                    <div class="table-card table-card-height">
+                        <table class="history-table activities-table">
+                            <tbody>
+                                <tr>
+                                    <th scope='col'>Account</th>
+                                    <th scope='col'>Description</th>
+                                    <th scope='col'>Deposit</th>
+                                    <th scope='col'>Withdrawal</th>
+                                    <th scope='col'>Date</th>
+                                </tr>
+                                <?php
+                                for ($i = 0; $i <= 17; $i+=1) {
+                                    $j = $i + 18 * $pageIndex;
+                                    if (array_key_exists($j, $transactions)) {
+                                        $date = $transactions[$j]["date"].$transactions[$j]["year"];
+                                        $time = strtotime($date);
+                                        $newTime = date("d-m-Y", $time);
+                                        $negative = $transactions[$j]["amount"] < 0;
+                                        $amountColor = "";
+                                        $withdraw = $negative ? $setup["currencySymbol"].number_format((float)abs($transactions[$j]["amount"]), 2, '.', ',') : ' ';
+                                        $deposit = $negative ? ' ' : $setup["currencySymbol"].number_format((float)abs($transactions[$j]["amount"]), 2, '.', ',');
+                                        echo '<tr>';
+                                        echo '<th>'.$transactions[$j]["accountNum"].'</th>';
+                                        echo '<td>'.$transactions[$j]["desc"].'</td>';
+                                        echo '<td>'.$deposit.'</td>';
+                                        echo '<td>'.$withdraw.'</td>';
+                                        echo '<td>'.$newTime.'</td>';
+                                        echo '</tr>';
+                                    } else {
+                                        echo '<tr class="tr-hover-disable">';
+                                        echo '<th> </th>';
+                                        echo '<td> </td>';
+                                        echo '<td> </td>';
+                                        echo '<td> </td>';
+                                        echo '<td> </td>';
+                                        echo '</tr>';
+                                    }
+                                };
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <ul class="page-nav card-footer">
                         <?php
                             if ($page == 1) {
                                 echo '<a class="current">1</a>';

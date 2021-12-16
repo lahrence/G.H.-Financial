@@ -26,11 +26,13 @@ if (!$setup["darkMode"]) {
     $SecondaryText = '#858585';
 }
 
+$bgOpacity = $setup["backgroundImage"] == true ? '0.2' : '0';
+
 echo '  <style>
             :root {
                 --third: calc(100% / 3); /*var(--third)*/
                 --two-thirds: calc(100% / 3 * 2); /*var(--two-thirds)*/
-                --transition: 0.2s ease-out; /*var(--transition)*/
+                --transition: 0.04s ease-out; /*var(--transition)*/
                 --primary-bg: '.$primaryBG.'; /*var(--primary-bg)*/
                 --primary-text: '.$primaryText.'; /*var(--primary-text)*/
                 --black: '.$black.'; /*var(--black)*/
@@ -40,12 +42,22 @@ echo '  <style>
                 --transparent: #20202000; /*var(--transparent)*/
                 --border-radius: '.$setup["borderRadius"].'px;
                 --border-radius-double: 10px; /*var(--border-radius-double)*/
+                --border-radius-circle: 1000px; /*var(--border-radius-circle)*/
                 --green: #159c15; /*var(--green)*/
                 --menu-primary: #202020;
                 --menu-secondary: #fff;
                 --menu-hover: #353535;
-            }
-        </style>';
+                --hover-opacity: 0.8;
+            }';
+echo '      .image-overlay {
+                z-index: -2;
+                position: fixed;
+                width: 100vw;
+                height: 100vh;
+                background-image: url('.$path.'assets/images/textures/pattern-texture.jpg);
+                opacity: '.$bgOpacity.';
+            }';
+echo '  </style>';
 
 echo '<title>'.$title.$setup["title"].'</title>';
 echo '<link rel="stylesheet" href="'.$path.'assets/css/'.$css.'.css"/>';
@@ -72,3 +84,4 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
+<div class="image-overlay"></div>
