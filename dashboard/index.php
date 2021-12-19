@@ -60,7 +60,6 @@
                 </div>
                 <div class="card-group-two-thrid-sb">
                     <section>
-                        
                     </section>
                     <section class="history history-dashboard">
                         <div class="table-card">

@@ -1,4 +1,9 @@
-<footer>
+<footer <?php 
+            if ($isRoot) {
+                echo 'class="solid-color-footer"';
+            }
+            
+        ?>>
     <div>
         <?php
             echo '<p>'.$setup["footerText"].'</p>';

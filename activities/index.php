@@ -107,12 +107,13 @@
                             if ($page <= $maxPage-$buttonRange*2) {
                                 echo '<a class="page-nav-gap">...</a>';
                             }
-                            if ($page == $maxPage) {
-                                echo '<a class="current">'.$maxPage.'</a>';
-                            } else {
-                                echo '<a href="index.php?page='.$maxPage.'">'.$maxPage.'</a>';
+                            if ($maxPage != 1) {
+                                if ($page == $maxPage) {
+                                    echo '<a class="current">'.$maxPage.'</a>';
+                                } else {
+                                    echo '<a href="index.php?page='.$maxPage.'">'.$maxPage.'</a>';
+                                }
                             }
-                            
                         ?>
                     </ul>
                 </section>

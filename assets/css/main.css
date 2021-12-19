@@ -123,7 +123,7 @@ body {
 
     .navbar-content {
         height: 550px;
-        transition: var(--transition);
+        transition: var(--transition-long);
         margin: 0;
         padding: 0;
         list-style: none;
@@ -141,7 +141,7 @@ body {
 
     .expand-icon {
         transform: scaleY(-1);
-        transition: var(--transition);
+        transition: var(--transition-long);
         user-select: none;
     }
 
@@ -176,7 +176,7 @@ body {
         user-select: none;
         color: var(--menu-secondary);
         cursor: pointer;
-        transition: var(--transition);
+        transition: var(--transition-long);
     }
 
     .navbar-content a:hover {
@@ -474,10 +474,15 @@ section {
 .history-table tr {
     height: 5px;
     transition: var(--transition);
+    border-bottom: 1px solid var(--primary-bg);
 }
 
 .history-table tr:nth-child(1):hover {
     background-color: var(--primary-text);
+}
+
+.tr-hover-disable {
+    border-bottom: none !important;
 }
 
 .tr-hover-disable:hover {
@@ -529,6 +534,36 @@ section {
 .error {
     color: tomato;
     font-style: italic;
+}
+
+.log-in-content-div {
+    height: 90vh;
+    overflow: hidden;
+}
+
+.log-in-form-card {
+    margin: 57vh 35% 0px 35%;
+    height: 400px;
+    transform: translateY(-32vh);
+}
+
+@media only screen and (max-height: 500px) {
+    .log-in-content-div {
+        height: 90vh;
+        overflow: scroll;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .log-in-form-card {
+        margin: 50vh 0 0px 0;
+        height: 400px;
+        transform: translateY(-32vh);
+    }
+}
+
+.log-in-form {
+    height: 300px;
 }
 
 /*Footer*/

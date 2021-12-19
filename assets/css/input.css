@@ -116,6 +116,11 @@ form .bi:hover {
     box-shadow: -2px 0px 0px 0px var(--green);
 }
 
+.input-text-settings:focus {
+    outline: none;
+    box-shadow: -2px 0.2px 0px 0px var(--green) !important;
+}
+
 .input-text-container {
     height: 42.5px;
     background-color: var(--primary-bg);

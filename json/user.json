@@ -1,7 +1,7 @@
 {
     "password": "Admin123$$",
-    "username": "Admin",
-    "isLoggedIn": true,
+    "username": "admin",
+    "isLoggedIn": false,
     "fName": "John",
     "lName": "Smith"
 }

@@ -2,9 +2,10 @@
     "currency": "USD",
     "currencySymbol": "$",
     "title": "Gull le Belle",
+    "abbreviation": "GB",
     "footerText": "\u00a9 Gull le Belle 2021",
     "borderRadius": "5",
-    "backgroundImage": false,
-    "loginCheck": false,
-    "darkMode": true
+    "backgroundImage": true,
+    "loginCheck": true,
+    "darkMode": false
 }

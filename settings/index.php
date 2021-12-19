@@ -10,21 +10,6 @@
         if (!$user["isLoggedIn"] and $setup["loginCheck"]) {
             header("Location: ../index.php?error=notloggedin");
         }
-        $file = __DIR__."\..\json\history.json";
-        $fileContent = file_get_contents($file);
-        $transactions = json_decode($fileContent, true);
-        $length = count($transactions);
-        $maxPage = ceil($length/18);
-        $buttonRange = 2;
-
-        $page = isset($_GET['page']) ? $_GET['page'] : 1;
-        if ($page > $maxPage) {
-            header("Location: index.php?page=".$maxPage);
-        }
-        else if ($page <= 0) {
-            header("Location: index.php?page=1");
-        }
-        $pageIndex = empty($_GET['page']) ? 0 : $_GET['page'] - 1;
         ?>
     </head>
     <body>
