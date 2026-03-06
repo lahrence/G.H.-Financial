@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <?php
+
+<head>
+    <?php
         $path = "../";
         $css = "main";
         $title = "Dashboard | ";
@@ -11,23 +12,24 @@
             header("Location: ../index.php?error=notloggedin");
         }
         ?>
-    </head>
-    <body>
-        <div class="content">
-            <?php
+</head>
+
+<body>
+    <div class="content">
+        <?php
                 require("../assets/requires/nav.php");
             ?>
-            <div class="content-div dashboard">
-                <section class="header">
-                    <div class="header-text">
-                        <?php
+        <div class="content-div dashboard">
+            <section class="header">
+                <div class="header-text">
+                    <?php
                             echo '<p>Welcome back, '.$user["fName"].'.</p>';
                         ?>
-                        <h4>Your Dashboard</h4>
-                    </div>
-                </section>
-                <div class="card-group-third">
-                    <?php
+                    <h4>Your Dashboard</h4>
+                </div>
+            </section>
+            <div class="card-group-third">
+                <?php
                         $file = __DIR__."\..\json\account.json";
                         $fileContent = file_get_contents($file);
                         $accounts = json_decode($fileContent, true);
@@ -57,22 +59,22 @@
                             echo '</section>';
                         }
                     ?>
-                </div>
-                <div class="card-group-two-thrid-sb">
-                    <section>
-                    </section>
-                    <section class="history history-dashboard">
-                        <div class="table-card">
-                            <table class="history-table dashboard-table">
-                                <tbody>
-                                    <tr>
-                                        <th scope='col'>Account</th>
-                                        <th scope='col'>Description</th>
-                                        <th scope='col'>Deposit</th>
-                                        <th scope='col'>Withdrawal</th>
-                                        <th scope='col'>Date</th>
-                                    </tr>
-                                    <?php
+            </div>
+            <div class="card-group-two-thrid-sb">
+                <section>
+                </section>
+                <section class="history history-dashboard">
+                    <div class="table-card">
+                        <table class="history-table dashboard-table">
+                            <tbody>
+                                <tr>
+                                    <th scope='col'>Account</th>
+                                    <th scope='col'>Description</th>
+                                    <th scope='col'>Deposit</th>
+                                    <th scope='col'>Withdrawal</th>
+                                    <th scope='col'>Date</th>
+                                </tr>
+                                <?php
                                     $file = __DIR__."\..\json\history.json";
                                     $fileContent = file_get_contents($file);
                                     $transactions = json_decode($fileContent, true);
@@ -95,16 +97,17 @@
                                         }
                                     };
                                     ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="card-footer"><a href="../activities/">Show All Transactions</a></div>
-                    </section>
-                </div>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer"><a href="../activities/">Show All Transactions</a></div>
+                </section>
             </div>
         </div>
-        <?php
+    </div>
+    <?php
             require("../assets/requires/footer.php");
         ?>
-    </body>
+</body>
+
 </html>

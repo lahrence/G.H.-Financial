@@ -11,6 +11,7 @@ $borderRadius = $_POST["borderRadius"];
 $backgroundImage = isset($_POST["backgroundImage"]) ? true : false;
 $loginCheck = isset($_POST["loginCheck"]) ? true : false;
 $darkMode = isset($_POST["darkMode"]) ? true : false;
+$isDisguised = isset($_POST["isDisguised"]) ? true : false;
 
 echo var_dump($currency);
 echo var_dump($currencySymbol);
@@ -20,6 +21,7 @@ echo var_dump($borderRadius);
 echo var_dump($backgroundImage);
 echo var_dump($loginCheck);
 echo var_dump($darkMode);
+echo var_dump($isDisguised);
 
 $setup["currency"] = $currency;
 $setup["currencySymbol"] = $currencySymbol;
@@ -29,6 +31,7 @@ $setup["borderRadius"] = $borderRadius;
 $setup["backgroundImage"] = $backgroundImage;
 $setup["loginCheck"] = $loginCheck;
 $setup["darkMode"] = $darkMode;
+$setup["isDisguised"] = $isDisguised;
 
 $file = fopen($fileName, 'w');
 fwrite($file, json_encode($setup, JSON_PRETTY_PRINT));

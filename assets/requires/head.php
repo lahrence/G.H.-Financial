@@ -1,5 +1,6 @@
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"><?php
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<?php
 # Get value from setup.json
 $file = __DIR__.'\..\..\json\setup.json';
 $fileContent = file_get_contents($file);
@@ -28,7 +29,7 @@ if (!$setup["darkMode"]) {
 
 $bgOpacity = $setup["backgroundImage"] == true ? '0.2' : '0';
 
-echo '  <style>
+echo '<style>
             :root {
                 --third: calc(100% / 3); /*var(--third)*/
                 --two-thirds: calc(100% / 3 * 2); /*var(--two-thirds)*/
@@ -49,42 +50,54 @@ echo '  <style>
                 --menu-secondary: #fff;
                 --menu-hover: #353535;
                 --hover-opacity: 0.8;
-            }';
-echo '      .image-overlay {
+            }
+                .image-overlay {
                 z-index: -2;
                 position: fixed;
                 width: 100vw;
                 height: 100vh;
                 background-image: url('.$path.'assets/images/textures/pattern-texture.jpg);
                 opacity: '.$bgOpacity.';
-            }';
-echo '  </style>';
+            }
+</style>';
 
 echo '<title>'.$title.$setup["title"].'</title>';
 echo '<link rel="stylesheet" href="'.$path.'assets/css/'.$css.'.css"/>';
 echo '<link rel="stylesheet" href="'.$path.'assets/css/main.css"/>';
 echo '<link rel="stylesheet" href="'.$path.'assets/css/input.css"/>';
-echo '<link rel="icon" href="'.$path.'assets/images/logo/logo-background-solid.png" type="image/x-icon"/>';
+echo '<link rel="icon" href="'.$path.'assets/images/logo/logo-background.png" type="image/x-icon"/>';
 ?>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
-<!--Start of Tawk.to Script-->
+<link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
+    rel="stylesheet">
+
+<!--
+    Start of Tawk.to Script
+-->
 <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5f1602dd7258dc118bee9c48/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
+var Tawk_API = Tawk_API || {},
+    Tawk_LoadStart = new Date();
+(function() {
+    var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/5f1602dd7258dc118bee9c48/default';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
 })();
 </script>
 <!--End of Tawk.to Script-->

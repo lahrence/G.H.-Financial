@@ -1,11 +1,12 @@
 {
-    "currency": "USD",
+    "currency": "CAD",
     "currencySymbol": "$",
     "title": "Gull le Belle",
     "abbreviation": "GB",
-    "footerText": "\u00a9 Gull le Belle 2021",
+    "footerText": "\u00a9 Gull le Belle 2026",
     "borderRadius": "5",
-    "backgroundImage": true,
+    "backgroundImage": false,
     "loginCheck": true,
-    "darkMode": false
+    "darkMode": false,
+    "isDisguised": false
 }

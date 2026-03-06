@@ -11,5 +11,5 @@
     </div>
 </footer>
 <?php
-echo '<script rel="stylesheet" src="'.$path.'assets/js/main.js"></script';
+echo '<script src="'.$path.'assets/js/main.js"></script>';
 ?>
