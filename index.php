@@ -55,11 +55,9 @@
                     <li><img />Savings</li>
                 </ul>
             </section>
+            <section class="accounts-banner"></section>
         </div>
     </div>
-    <?php
-            require("assets/requires/footer.php");
-        ?>
 </body>
 
 </html>
